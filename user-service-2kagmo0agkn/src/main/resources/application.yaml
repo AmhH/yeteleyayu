@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:company;MODE=MySQL;DATABASE_TO_UPPER=false
+      driver-class-name: org.h2.Driver
+      username: sa
+      password: password
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: true
+server:
+  port: 8000
+
+feign:
+  client:
+    config:
+      the_name_of_your_feign_client:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
