@@ -1,0 +1,47 @@
+type Query {
+    findAllLoads: [Load]!
+    findAllOrders: [Order]!
+    findAllLocations: [Location]!
+    countLoads: Int!
+    countOrders: Int!
+    countLocations: Int!
+}
+
+type Mutation {
+    newLocation(city: String!, state: String!, zipCode: String!): Location!
+    updateLocation(id: ID!, city: String!, state: String!, zipCode: String!): Location!
+    deleteLocation(city: String!): Boolean
+    newOrder(pickUpDateTime: String!, deliveryDateTime: String,pickUpStopId: ID!, deliveryStopId: ID!, hazmat: Boolean!): Order!
+    updateOrder(id: ID!, pickUpDateTime: String, deliveryDateTime: String, pickUpStopId: ID, deliveryStopId: ID, hazmat: Boolean!, loadId: ID): Order!
+    newLoad(equipmentType: String!, hazmat: Boolean!, ltl: Boolean!, miles: Float, stops: Int, weight: Float, originId: ID!, destinationId: ID!): Load!
+}
+
+type Load {
+    id: ID!
+    stops: Int
+    origin: Location!
+    destination: Location!
+    equipmentType: String!
+    hazmat: Boolean
+    weight: Float!
+    ltl: Boolean!
+    miles: Float!
+    order: [Order!]
+}
+
+type Order {
+    id: ID!
+    loadId: ID
+    pickUpDateTime: String!
+    deliveryDateTime: String!
+    pickUpStop: Location!
+    deliveryStop: Location!
+    hazmat: Boolean
+}
+
+type Location {
+    id: ID!
+    city: String!
+    state: String!
+    zipCode: String!
+}
