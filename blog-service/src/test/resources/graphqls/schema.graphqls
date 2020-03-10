@@ -1,0 +1,54 @@
+schema {
+    query: Query,
+    mutation: Mutation,
+    subscription: Subscription
+}
+
+type Query {
+    note(id: ID!): Note
+    notes: [Note]
+}
+
+type Mutation {
+    addNote(note: InputNote!, author: InputPerson!): Note
+}
+
+
+type Subscription {
+    notes: NoteUpdate}
+
+
+# Object to represent a note
+type Note {
+    id: ID!
+    note: String
+    createdOn : String
+    author: Person
+}
+
+# Object to represent a note
+type Person {
+    id: ID!
+    name: String
+    email: String
+}
+
+# Input type for the author of the note
+input InputPerson {
+    name: String!
+    email: String
+}
+
+# Input type for a new Note
+input InputNote {
+    note: String!
+}
+
+type NoteUpdate {
+    # The note text
+    note : String
+    # The name of the author
+    authorName : String
+    # Time when the note was received
+    createdOn : String
+}
