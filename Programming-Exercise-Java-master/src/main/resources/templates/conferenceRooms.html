@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Conference Rooms</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css"
+              th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>TCS where_is simulator</h1>
+                    <table class="table">
+                        <tr>
+                            <th>Conference Room</th>
+                            <th>Location</th>
+                        </tr>
+                        <tr th:each="queryModel : ${queryModelList}">
+                            <td th:text="${queryModel.query}"></td>
+                            <td th:text="${queryModel.result}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
