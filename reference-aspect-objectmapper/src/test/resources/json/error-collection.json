@@ -1,0 +1,6 @@
+{
+  "name": "blah",
+  "count": "should be a number",
+  "other": "ok",
+  "anotherCount": "wrong again"
+}
